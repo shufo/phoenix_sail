@@ -12,8 +12,27 @@ defmodule Mix.Tasks.Sail.Install do
 
   def run(args) do
     File.mkdir_p("./priv/phoenix_sail")
-    File.copy(@docker_compose_file, "./docker-compose.yml")
+    File.write!("./docker-compose.yml", get_docker_compose_body())
     File.cp_r(@runtime, "./priv/phoenix_sail/runtime")
     File.cp_r(@bin_file, "./priv/sail")
+  end
+
+  defp get_docker_compose_body() do
+    database_name = database_name()
+    IO.puts("DB name specified: #{database_name}")
+
+    File.read!(@docker_compose_file)
+    |> String.replace("#_DB_DATABASE_#", database_name)
+  end
+
+  defp database_name() do
+    rootDir =
+      File.cwd!()
+      |> Path.basename()
+
+    case Mix.shell().prompt("Database Name [#{rootDir}]: ") do
+      "\n" -> rootDir
+      x -> x
+    end
   end
 end

@@ -12,6 +12,7 @@ services:
         environment:
             WWWUSER: '${WWWUSER}'
             DB_HOST: mysql
+            DB_DATABASE: #_DB_DATABASE_#
             PHOENIX_SAIL: 1
         volumes:
             - '.:/var/www/html'
