@@ -44,6 +44,20 @@ services:
             - 'sailmysql:/var/lib/mysql'
         networks:
             - sail
+    # postgres:
+    #     image: postgres:13
+    #     ports:
+    #         - '${DB_PORT:-5432}:5432'
+    #     environment:
+    #         POSTGRES_PASSWORD: '#_DB_PASSWORD_#'
+    #         POSTGRES_USER: '#_DB_USERNAME_#'
+    #         POSTGRES_DB: '#_DB_DATABASE_#'
+    #         POSTGRES_HOST_AUTH_METHOD: trust
+    #     volumes:
+    #         - 'sailpostgres:/var/lib/postgresql/data'
+    #     networks:
+    #         - sail
+
     redis:
         image: 'redis:alpine'
         ports:
@@ -73,3 +87,5 @@ volumes:
         driver: local
     sailredis:
         driver: local
+    # sailpostgres:
+    #     driver: local
