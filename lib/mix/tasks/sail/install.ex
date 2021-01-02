@@ -16,6 +16,8 @@ defmodule Mix.Tasks.Sail.Install do
     [ecto_repo] = configs |> Keyword.get(:ecto_repos)
     repo_config = configs |> Keyword.get(ecto_repo)
 
+    overwrite_repo_config(repo_config[:hostname])
+
     File.mkdir_p("./priv/phoenix_sail")
     Logger.info("./priv/phoenix_sail created")
     File.write!("./docker-compose.yml", get_docker_compose_body(repo_config))
@@ -44,5 +46,17 @@ e.g. $ sail up -d
     |> String.replace("#_DB_DATABASE_#", repo_config[:database])
     |> String.replace("#_DB_USERNAME_#", repo_config[:username])
     |> String.replace("#_DB_PASSWORD_#", repo_config[:password])
+  end
+
+  defp overwrite_repo_config(host) do
+    content =
+      File.read!("./config/dev.exs")
+      |> String.replace(
+        ~r/hostname\:.*/,
+        ~s/hostname: System.get_env("DB_HOST") || "localhost",/
+      )
+
+    File.write("./config/dev.exs", content)
+    Logger.info("Overwrite config/dev.exs")
   end
 end
