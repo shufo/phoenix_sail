@@ -3,6 +3,7 @@ defmodule Mix.Tasks.Sail.Install do
   @shortdoc "Echoes arguments"
 
   use Mix.Task
+  require Logger
 
   @impl Mix.Task
   @runtime Application.app_dir(:phoenix_sail, "priv/phoenix_sail/runtime")
@@ -16,9 +17,26 @@ defmodule Mix.Tasks.Sail.Install do
     repo_config = configs |> Keyword.get(ecto_repo)
 
     File.mkdir_p("./priv/phoenix_sail")
+    Logger.info("./priv/phoenix_sail created")
     File.write!("./docker-compose.yml", get_docker_compose_body(repo_config))
+    Logger.info("./docker-compose.yml created")
     File.cp_r(@runtime, "./priv/phoenix_sail/runtime")
     File.cp_r(@bin_file, "./priv/sail")
+    Logger.info("./priv/sail created")
+    Logger.info(~s(Install finished!
+
+=> Run the following command to add alias to your shell:
+
+echo 'alias sail="priv/sail"' >> ~/.bashrc
+source ~/.bashrc
+
+or for zsh
+
+echo 'alias sail="priv/sail"' >> ~/.zshrc
+source ~/.zshrc
+
+e.g. $ sail up -d
+))
   end
 
   defp get_docker_compose_body(repo_config) do
