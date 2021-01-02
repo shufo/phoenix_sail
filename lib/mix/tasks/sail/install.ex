@@ -7,7 +7,6 @@ defmodule Mix.Tasks.Sail.Install do
   @impl Mix.Task
   @runtime Application.app_dir(:phoenix_sail, "priv/phoenix_sail/runtime")
   @docker_compose_file Application.app_dir(:phoenix_sail, "priv/phoenix_sail/docker-compose.yml")
-  @docker_files Application.app_dir(:phoenix_sail, "priv/phoenix_sail/runtime")
   @bin_file Application.app_dir(:phoenix_sail, "priv/phoenix_sail/sail")
 
   def run(args) do
