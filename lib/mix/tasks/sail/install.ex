@@ -9,7 +9,7 @@ defmodule Mix.Tasks.Sail.Install do
   @docker_compose_file Application.app_dir(:phoenix_sail, "priv/phoenix_sail/docker-compose.yml")
   @bin_file Application.app_dir(:phoenix_sail, "priv/phoenix_sail/sail")
 
-  def run(args) do
+  def run(_args) do
     app_name = Mix.Project.config() |> Keyword.get(:app)
     configs = Application.get_all_env(app_name)
     [ecto_repo] = configs |> Keyword.get(:ecto_repos)
