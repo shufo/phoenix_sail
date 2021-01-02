@@ -2,7 +2,7 @@ version: '3'
 services:
     phoenix.test:
         build:
-            context: ./priv/phoenix_sail/runtime/1.11
+            context: deps/phoenix_sail/priv/phoenix_sail/runtime/1.11
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
