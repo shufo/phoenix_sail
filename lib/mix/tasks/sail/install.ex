@@ -11,28 +11,21 @@ defmodule Mix.Tasks.Sail.Install do
   @bin_file Application.app_dir(:phoenix_sail, "priv/phoenix_sail/sail")
 
   def run(args) do
+    app_name = Mix.Project.config() |> Keyword.get(:app)
+    configs = Application.get_all_env(app_name)
+    [ecto_repo] = configs |> Keyword.get(:ecto_repos)
+    repo_config = configs |> Keyword.get(ecto_repo)
+
     File.mkdir_p("./priv/phoenix_sail")
-    File.write!("./docker-compose.yml", get_docker_compose_body())
+    File.write!("./docker-compose.yml", get_docker_compose_body(repo_config))
     File.cp_r(@runtime, "./priv/phoenix_sail/runtime")
     File.cp_r(@bin_file, "./priv/sail")
   end
 
-  defp get_docker_compose_body() do
-    database_name = database_name()
-    IO.puts("DB name specified: #{database_name}")
-
+  defp get_docker_compose_body(repo_config) do
     File.read!(@docker_compose_file)
-    |> String.replace("#_DB_DATABASE_#", database_name)
-  end
-
-  defp database_name() do
-    rootDir =
-      File.cwd!()
-      |> Path.basename()
-
-    case Mix.shell().prompt("Database Name [#{rootDir}]: ") do
-      "\n" -> rootDir
-      x -> x
-    end
+    |> String.replace("#_DB_DATABASE_#", repo_config[:database])
+    |> String.replace("#_DB_USERNAME_#", repo_config[:username])
+    |> String.replace("#_DB_PASSWORD_#", repo_config[:password])
   end
 end
