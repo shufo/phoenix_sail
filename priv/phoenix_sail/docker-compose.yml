@@ -36,7 +36,7 @@ services:
             - '${DB_PORT:-3306}:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '#_DB_PASSWORD_#'
-            MYSQL_DATABASE:  '#_DB_DATABASE_#'
+            MYSQL_DATABASE: '#_DB_DATABASE_#'
             MYSQL_USER: '#_DB_USERNAME_#'
             MYSQL_PASSWORD: '#_DB_PASSWORD_#'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
