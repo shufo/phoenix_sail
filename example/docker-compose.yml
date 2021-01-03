@@ -2,7 +2,7 @@ version: '3'
 services:
     phoenix.test:
         build:
-            context: ./priv/phoenix_sail/runtime/1.11
+            context: deps/phoenix_sail/priv/phoenix_sail/runtime/1.11
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -12,6 +12,7 @@ services:
         environment:
             WWWUSER: '${WWWUSER}'
             DB_HOST: mysql
+            DB_DATABASE: example_dev
             PHOENIX_SAIL: 1
         volumes:
             - '.:/var/www/html'
@@ -34,15 +35,29 @@ services:
         ports:
             - '${DB_PORT:-3306}:3306'
         environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ROOT_PASSWORD: ''
+            MYSQL_DATABASE: 'example_dev'
+            MYSQL_USER: 'root'
+            MYSQL_PASSWORD: ''
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
             - 'sailmysql:/var/lib/mysql'
         networks:
             - sail
+    # postgres:
+    #     image: postgres:13
+    #     ports:
+    #         - '${DB_PORT:-5432}:5432'
+    #     environment:
+    #         POSTGRES_PASSWORD: ''
+    #         POSTGRES_USER: 'root'
+    #         POSTGRES_DB: 'example_dev'
+    #         POSTGRES_HOST_AUTH_METHOD: trust
+    #     volumes:
+    #         - 'sailpostgres:/var/lib/postgresql/data'
+    #     networks:
+    #         - sail
+
     redis:
         image: 'redis:alpine'
         ports:
@@ -72,3 +87,5 @@ volumes:
         driver: local
     sailredis:
         driver: local
+    # sailpostgres:
+    #     driver: local
