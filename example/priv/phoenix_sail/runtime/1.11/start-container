@@ -8,6 +8,10 @@ if [ ! -d /.mix ]; then
     mix local.hex --force
 fi
 
+if [ ! -d /var/www/html/assets/node_modules ]; then
+    (cd /var/www/html/assets && npm install)
+fi
+
 chmod -R ugo+rw /.mix
 
 if [ $# -gt 0 ];then
