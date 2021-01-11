@@ -1,0 +1,15 @@
+{
+  "name": "phoenix_sail",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/shufo/phoenix_sail.git",
+  "author": "shufo <meikyowise@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.8.0"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
