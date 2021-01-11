@@ -37,6 +37,14 @@ $ sail shell
 
 ## Advanced
 
+### iex
+
+Use iex REPL
+
+```bash
+$ sail iex
+```
+
 ### MySQL
 
 Connect To MySQL shell
