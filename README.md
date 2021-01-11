@@ -1,11 +1,12 @@
-# PhoenixSail
+# Phoenix Sail
 
-**TODO: Add description**
+⛵ A [Laravel Sail](/home/shuhei/develop/phoenix_sail/README.md) port for Phoenix
+
+Phoenix Sail provides Docker powered local environment for Phoenix.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `phoenix_sail` to your list of dependencies in `mix.exs`:
+Add `phoenix_sail` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +16,18 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/phoenix_sail](https://hexdocs.pm/phoenix_sail).
+```bash
+$ mix deps.get
+```
 
+then run below command.
+
+```bash
+$ mix sail.install
+```
+
+## Usage
+
+```bash
+
+```
