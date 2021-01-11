@@ -16,18 +16,6 @@ def deps do
 end
 ```
 
-```bash
-$ mix deps.get
-```
+## Documentation
 
-then run below command.
-
-```bash
-$ mix sail.install
-```
-
-## Usage
-
-```bash
-
-```
+see [Documentation](https://phoenix-sail.vercel.app/installation.html)
