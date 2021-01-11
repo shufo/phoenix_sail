@@ -1,6 +1,7 @@
 ---
 home: true
 heroText: Phoenix Sail
+heroImage: /assets/img/logo.png
 tagline: Docker powered local environment for Phoenix
 actionText: Get Started →
 actionLink: /installation/
