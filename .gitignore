@@ -25,3 +25,7 @@ phoenix_sail-*.tar
 
 # Temporary files for e.g. tests
 /tmp
+
+node_modules
+
+dist/
