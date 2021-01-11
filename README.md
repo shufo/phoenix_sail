@@ -1,6 +1,6 @@
 # Phoenix Sail
 
-⛵ A [Laravel Sail](/home/shuhei/develop/phoenix_sail/README.md) port for Phoenix
+⛵ A [Laravel Sail](https://laravel.com/docs/8.x/sail) port for Phoenix
 
 Phoenix Sail provides Docker powered local environment for Phoenix.
 
