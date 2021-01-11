@@ -64,7 +64,7 @@ if [ $# -gt 0 ]; then
         source ./.env
     fi
 
-    # Proxy Composer commands to the "composer" binary on the application container...
+    # Proxy mix commands to the "mix" binary on the application container...
     elif [ "$1" == "mix" ]; then
         shift 1
 
@@ -77,7 +77,7 @@ if [ $# -gt 0 ]; then
             sail_is_not_running
         fi
 
-    # Proxy Artisan commands to the "artisan" binary on the application container...
+    # Proxy Artisan commands to the "iex" binary on the application container...
     elif [ "$1" == "iex" ] || [ "$1" == "i" ]; then
         shift 1
 
@@ -90,7 +90,7 @@ if [ $# -gt 0 ]; then
             sail_is_not_running
         fi
 
-    # Proxy the "test" command to the "php artisan test" Artisan command...
+    # Proxy the "test" command to the "mix test" command...
     elif [ "$1" == "test" ]; then
         shift 1
 
