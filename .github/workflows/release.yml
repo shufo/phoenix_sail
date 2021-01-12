@@ -29,5 +29,4 @@ jobs:
           elixir-version: '1.11.3'
       - run: mix deps.get
       - run: mix compile
-      - run: mix hex.user key generate
       - run: mix hex.publish --yes
