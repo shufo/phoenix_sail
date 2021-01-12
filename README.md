@@ -17,7 +17,7 @@ Add `phoenix_sail` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:phoenix_sail, "~> 0.1.0", only: [:dev]}
+    {:phoenix_sail, "~> 0.1.1", only: [:dev]}
   ]
 end
 ```
