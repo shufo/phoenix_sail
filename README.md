@@ -1,5 +1,7 @@
 # Phoenix Sail
 
+![](./docs/.vuepress/public/assets/img/logo.png)
+
 ⛵ A [Laravel Sail](https://laravel.com/docs/8.x/sail) port for Phoenix
 
 Phoenix Sail provides Docker powered local environment for Phoenix.
@@ -14,7 +16,7 @@ Add `phoenix_sail` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:phoenix_sail, "~> 0.1.0", only: [:dev]
+    {:phoenix_sail, "~> 0.1.0", only: [:dev]}
   ]
 end
 ```
