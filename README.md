@@ -1,6 +1,7 @@
 # Phoenix Sail
 
-![](./docs/.vuepress/public/assets/img/logo.png)
+![logo_cropped](https://user-images.githubusercontent.com/1641039/104266005-1eb55e00-54d2-11eb-919a-7a2b596b9330.png)
+
 
 ⛵ A [Laravel Sail](https://laravel.com/docs/8.x/sail) port for Phoenix
 
